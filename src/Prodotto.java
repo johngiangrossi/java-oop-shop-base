@@ -1,12 +1,13 @@
+
 public final class Prodotto {
-    
+
     // fields
     public int code;
     public String name;
     public String description;
     public double price;
     public int iva;
-    
+
     // costruttore
     public Prodotto(String name, double price) {
 
@@ -16,18 +17,18 @@ public final class Prodotto {
             this.name = "";
             this.price = Double.NaN;
         } else {
-            this.code = getNewProductNumber();
+            code = getNewProductNumber();
             this.name = name;
             this.price = price;
-            this.iva = 22;
+            iva = 22;
         }
     }
 
     // ottengo il prezzo base
     public double getPrice() {
-        return this.price;
+        return price;
     }
-    
+
     // ottengo il nuovo codice prodotto
     public int getNewProductNumber() {
         int newProductNumber = (int) (Math.random() * 101);
@@ -36,13 +37,13 @@ public final class Prodotto {
 
     // ottengo il prezzo finale con iva
     public double getFinalPrice() {
-        double finalPrice = this.price + ((this.price * this.iva) / 100);
+        double finalPrice = price + ((price * iva) / 100);
         return finalPrice;
     }
-    
+
     // ottengo il nome completo con il codice
     public String getFullName() {
-        String fullName = "il prodotto " + this.name + " con il codice " + this.code;
+        String fullName = "il prodotto " + name + " con il codice " + this.code;
         return fullName;
     }
 }

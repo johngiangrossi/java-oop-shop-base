@@ -1,9 +1,11 @@
+
 public class App {
+
     public static void main(String[] args) throws Exception {
-        
+
         // uso il costruttore e inserisco i parametri del prodotto
         Prodotto prodotto1 = new Prodotto("biscotti", 10);
-        
+
         // calcolo prezzo finale
         double finalPrice = prodotto1.getFinalPrice();
 
