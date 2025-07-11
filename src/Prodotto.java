@@ -1,37 +1,33 @@
+import java.util.Random;
+
 
 public final class Prodotto {
 
     // fields
-    public int code;
-    public String name;
-    public String description;
-    public double price;
-    public int iva;
+    private int code;
+    private String name;
+    private String description;
+    private double price;
+    private int iva = 22;
 
     // costruttore
-    public Prodotto(String name, double price) {
+    public Prodotto(String name, double price, String description) {
 
         // verifica dei parametri corretti
-        if (name == null || "".equals(name) || price <= 0) {
-            System.out.println("hai inserito valori errati");
-            this.name = "";
-            this.price = Double.NaN;
+        if (name == null || name.equals("")|| price <= 0 || description == null) {
+            System.out.println("hai inserito valori errati, metto quelli di default");
         } else {
             code = getNewProductNumber();
             this.name = name;
             this.price = price;
-            iva = 22;
+            this.description = description;
         }
     }
 
-    // ottengo il prezzo base
-    public double getPrice() {
-        return price;
-    }
-
     // ottengo il nuovo codice prodotto
-    public int getNewProductNumber() {
-        int newProductNumber = (int) (Math.random() * 101);
+    private int getNewProductNumber() {
+        Random random = new Random();
+        int newProductNumber = random.nextInt(1000);
         return newProductNumber;
     }
 
@@ -43,7 +39,65 @@ public final class Prodotto {
 
     // ottengo il nome completo con il codice
     public String getFullName() {
-        String fullName = "il prodotto " + name + " con il codice " + this.code;
+        String fullName = name + "-" + this.code;
         return fullName;
     }
+
+
+
+    // getter
+    public String getDescription() {
+        return description;
+    }
+
+    public int getIva() {
+        return iva;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+
+    // setter
+    public void setDescription(String description) {
+        if (description == null || description.equals("")) {
+            System.out.println("hai inserito valori errati, metto quelli di default");
+        } else {
+            this.description = description;
+        }
+    }
+
+    public void setIva(int iva) {
+        if (iva <= 0) {
+            System.out.println("hai inserito valori errati, metto quella di default");
+        } else {
+            this.iva = iva;
+        }
+    }
+
+    public void setName(String name) {
+        if (name == null || name.equals("")) {
+            System.out.println("hai inserito valori errati, metto quelli di default");
+        } else {
+            this.name = name;
+        }
+    }
+
+    public void setPrice(double price) {
+        if (price <= 0) {
+            System.out.println("hai inserito valori errati, metto NaN");
+        } else {
+            this.price = price;
+        }
+    }
+    
 }
